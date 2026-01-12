@@ -1,15 +1,22 @@
 package com.lcx.lcxaiagent.app;
 
 
+import com.lcx.lcxaiagent.advisor.MyLoggerAdvisor;
+import com.lcx.lcxaiagent.advisor.ReReadingAdvisor;
+import com.lcx.lcxaiagent.chatmemory.FileBasedChatMemory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
 import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
+
 /**
  * 恋爱心理咨询AI应用类
  * 提供基于AI的恋爱心理咨询对话功能，支持多轮对话记忆
@@ -45,25 +52,20 @@ public class LoveApp {
         //MessageWindowChatMemory:Spring AI 提供的一种 聊天记忆实现类 它采用“滑动窗口”策略
         //只保留最近 N 条用户与 AI 的交互消息（包括用户提问和 AI 回答）
         //当消息数量超过设定上限时，自动丢弃最早的消息，确保上下文长度可控，避免超出模型 token 限制或性能下降。
-        MessageWindowChatMemory chatMemory = MessageWindowChatMemory.builder()
-                //chatMemoryRepository:指定存储聊天记录的仓库
+       /* MessageWindowChatMemory chatMemory = MessageWindowChatMemory.builder()*/
+        /*3.2期 初始化基于文件的对话记忆*/
+        String fileDir=System.getProperty("user.dir")+"/tmp/chat-memory";
+        ChatMemory chatMemory=new FileBasedChatMemory(fileDir);
 
-                //InMemoryChatMemoryRepository 表示将聊天历史保存在内存中（JVM 内存）
-                //优点：简单、快速，适合单机、开发测试或短期会话。
-                //缺点：不持久化，服务重启后历史丢失；不支持多实例共享（如集群部署时各节点无法共享同一用户的对话历史）。
-
-                //若需持久化或分布式支持，可替换为 Redis、数据库等实现（如自定义 ChatMemoryRepository）
-                .chatMemoryRepository(new InMemoryChatMemoryRepository())
-                //设置最多保留 20 条消息（注意：是“消息条数”，不是 token 数）。
-                //每次新对话加入后，如果总消息数 > 20，就从最旧的一条开始删除，直到 ≤ 20。
-                //这 20 条通常包含交替的用户输入（User Message）和 AI 回复（AI Message）
-                .maxMessages(20)
-                .build();
         // 构建聊天客户端
         chatClient=ChatClient.builder(dashscopeChatModel)
                 .defaultSystem(SYSTEM_PROMPT)
                 .defaultAdvisors(
                         MessageChatMemoryAdvisor.builder(chatMemory).build()
+                        /*自定义日志 Advisor，可按需开启*/
+//                        new MyLoggerAdvisor(),
+                        /*按需开启 自定义推理增强advisor 但有个弊端 token翻倍 成本太高*/
+//                        new ReReadingAdvisor()
                 )
                 .build();
     }
@@ -79,12 +81,38 @@ public class LoveApp {
         ChatResponse chatResponse = chatClient
                 .prompt()
                 .user(message)
+                /*.advisors(spec -> spec.param(ChatMemory.CONVERSATION_ID, chatId))*/
+                /*如果不传对话 ID（chatId），或者每次传不同的 ID，
+                Spring AI 就会认为这是一次全新的对话，
+                不会加载之前的聊天记录 → 上下文丢失 → 模型“失忆”。
+                而如果始终传同一个 chatId，
+                Spring AI 就知道：“哦，这是同一个用户/会话”，
+                于是自动把之前的所有问答历史加到当前请求里 → 模型能结合上下文回答。*/
+                /*只有传入相同的 chatId，Spring AI 才能把多次请求识别为“同一个对话”，从而自动加载历史消息，实现上下文记忆。
+                否则，每次都是“全新对话”，模型无法联系之前的问题。*/
                 .advisors(spec -> spec.param(ChatMemory.CONVERSATION_ID, chatId))
                 .call()
                 .chatResponse();
         String content=chatResponse.getResult().getOutput().getText();
         log.info("content:{}",content);
         return content;
+    }
+
+    record LoveReport(String title, List<String> suggestions){}
+
+    /**
+     * AI恋爱报告功能(实战结构化输出)
+     */
+    public LoveReport doChatWithReport(String message,String chatId){
+        LoveReport loveReport = chatClient
+                .prompt()
+                .system(SYSTEM_PROMPT + "每次对话后都要生成恋爱结构，标题为{用户名}的恋爱报告，内容为建议列表")
+                .user(message)
+                .advisors(spec -> spec.param(ChatMemory.CONVERSATION_ID, chatId))
+                .call()
+                .entity(LoveReport.class);
+        log.info("loveReport:{}",loveReport);
+        return loveReport;
     }
 
 }
