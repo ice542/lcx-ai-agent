@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: lcx-ai-agent
+  profiles:
+    active: local
+  ai:
+    dashscope:
+      # 需要替换为你自己的 key
+      api-key: "sk-6264f2825a044d33a1bf4d238768237d"
+      chat:
+        options:
+          model: qwen-plus
+#    ollama:
+#      base-url: http://localhost:11434
+#      chat:
+#        model: gemma3:1b
+server:
+  port: 8123
+  servlet:
+    context-path: /api
+#springdoc-openai ??????
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'default'
+      paths-to-match: '/**'
+      packages-to-scan: com.lcx.lcxaiagent.controller
+
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn

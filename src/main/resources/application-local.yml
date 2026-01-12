@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: lcx-ai-agent
+  ai:
+    dashscope:
+      api-key: "sk-6264f2825a044d33a1bf4d238768237d"
+      chat:
+        options:
+          model: qwen-plus
