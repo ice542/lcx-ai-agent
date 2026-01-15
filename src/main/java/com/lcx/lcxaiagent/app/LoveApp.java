@@ -130,6 +130,9 @@ public class LoveApp {
 
     @Resource
     private Advisor loveAppRagCloudAdvisor;
+
+    @Resource
+    private VectorStore pgVectorVectorStore;
     public String doChatWithRag(String message, String chatId) {
         // 查询重写
         ChatResponse chatResponse = chatClient

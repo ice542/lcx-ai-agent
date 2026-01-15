@@ -7,3 +7,14 @@ spring:
       chat:
         options:
           model: qwen-plus
+#  datasource:
+#    url: jdbc:postgresql://rm-cn-b8p4m1ifn0001yeo.rwlb.rds.aliyuncs.com/yu_ai_agent
+#    username: my_user
+#    password: licaixin060321@
+#    ai:
+#      vectorstore:
+#        pgvector:
+#          index-type: HNSW
+#          dimensions: 1536
+#          distance-type: COSINE_DISTANCE
+#          max-document-batch-size: 10000
