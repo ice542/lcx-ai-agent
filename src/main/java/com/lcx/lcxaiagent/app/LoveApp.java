@@ -4,6 +4,8 @@ package com.lcx.lcxaiagent.app;
 import com.lcx.lcxaiagent.advisor.MyLoggerAdvisor;
 import com.lcx.lcxaiagent.advisor.ReReadingAdvisor;
 import com.lcx.lcxaiagent.chatmemory.FileBasedChatMemory;
+import com.lcx.lcxaiagent.rag.LoveAppRagCustomAdvisorFactory;
+import com.lcx.lcxaiagent.rag.QueryRewriter;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
@@ -133,8 +135,12 @@ public class LoveApp {
 
     @Resource
     private VectorStore pgVectorVectorStore;
+
+    @Resource
+    private QueryRewriter queryRewriter;
     public String doChatWithRag(String message, String chatId) {
-        // 查询重写
+        // 查询重写 没必要重写 准确率不高
+//        String rewrittenMessage = queryRewriter.doQueryRewrite(message);
         ChatResponse chatResponse = chatClient
                 .prompt()
 //                 使用改写后的查询
