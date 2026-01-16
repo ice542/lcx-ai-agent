@@ -111,6 +111,27 @@
 <!--            <artifactId>spring-ai-pgvector-store</artifactId>-->
 <!--            <version>1.0.0-M6</version>-->
 <!--        </dependency>-->
+        <!--MCP Tool工具 根据网址解析到网页的内容 6.1期引入-->
+        <!-- jsoup 库‌实现网页内容抓取和​解析-->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.19.1</version>
+        </dependency>
+        <!--PDF 生成-->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-core</artifactId>
+            <version>9.1.0</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>font-asian</artifactId>
+            <version>9.1.0</version>
+            <scope>test</scope>
+        </dependency>
         <!--程序调用 AI 大模型 第三种方式 LangChain4j-->
         <!-- LangChain4J DashScope -->
         <dependency>
@@ -152,6 +173,7 @@
                     <fork>true</fork>
                     <source>21</source>
                     <target>21</target>
+<!--                    <parameters>true</parameters>-->
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>

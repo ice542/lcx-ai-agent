@@ -45,4 +45,29 @@ class LoveAppTest {
         String answer =  loveApp.doChatWithRag(message, chatId);
         Assertions.assertNotNull(answer);
     }
+    @Test
+    void doChatWithTools() {
+
+
+
+        testMessage("最近和对象吵架了，看看编程导航网站（codefather.cn）的其他情侣是怎么解决矛盾的？");
+
+
+        testMessage("直接下载一张适合做手机壁纸的星空情侣图片为文件");
+
+
+        testMessage("执行 Python3 脚本来生成数据分析报告");
+
+
+        testMessage("保存我的恋爱档案为文件");
+
+
+        testMessage("生成一份‘七夕约会计划’PDF，包含餐厅预订、活动流程和礼物清单");
+    }
+
+    private void testMessage(String message) {
+        String chatId = UUID.randomUUID().toString();
+        String answer = loveApp.doChatWithTools(message, chatId);
+        Assertions.assertNotNull(answer);
+    }
 }
