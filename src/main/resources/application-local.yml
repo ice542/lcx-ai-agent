@@ -3,7 +3,7 @@ spring:
     name: lcx-ai-agent
   ai:
     dashscope:
-      api-key: "sk-6264f2825a044d33a1bf4d238768237d"
+      api-key: "你的API key"
       chat:
         options:
           model: qwen-turbo
