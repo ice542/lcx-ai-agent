@@ -31,6 +31,161 @@
         <maven.compiler.target>21</maven.compiler.target>
         <java.version>21</java.version>
     </properties>
+<!--    <dependencyManagement>-->
+<!--        <dependencies>-->
+<!--            <dependency>-->
+<!--                <groupId>com.alibaba.cloud.ai</groupId>-->
+<!--                <artifactId>spring-ai-alibaba-bom</artifactId>-->
+<!--                <version>1.0.0.2</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.ai</groupId>-->
+<!--                <artifactId>spring-ai-bom</artifactId>-->
+<!--                <version>1.0.0</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+<!--        </dependencies>-->
+<!--    </dependencyManagement>-->
+<!--    <dependencyManagement>
+        <dependencies>
+            &lt;!&ndash; 修正为 1.0.0-M6 &ndash;&gt;
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>1.0.0-M6</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud.ai</groupId>
+                <artifactId>spring-ai-alibaba-bom</artifactId>
+                <version>1.0.0.2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>-->
+<!--    <dependencies>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-web</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;程序调用 AI 大模型 第一种方式 SDK 接入&ndash;&gt;-->
+<!--        &lt;!&ndash;阿里云百炼 灵积大模型服务&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba</groupId>-->
+<!--            <artifactId>dashscope-sdk-java</artifactId>-->
+<!--            <version>2.19.1</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;程序调用 AI 大模型 第二种方式 Spring AI&ndash;&gt;-->
+<!--        &lt;!&ndash;Spring AI Alibaba&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba.cloud.ai</groupId>-->
+<!--            <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>-->
+<!--            <version>1.0.0.2</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;支持结构化输出 3.2期视频引入&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.victools</groupId>-->
+<!--            <artifactId>jsonschema-generator</artifactId>-->
+<!--            <version>4.38.0</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;支持文件会话记忆持久化的序列化 3.2期视频引入&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.esotericsoftware</groupId>-->
+<!--            <artifactId>kryo</artifactId>-->
+<!--            <version>5.6.2</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;使用MarkdownDocumentReader 来读取markdown文档 4.1期引入依赖&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.ai</groupId>-->
+<!--            <artifactId>spring-ai-markdown-document-reader</artifactId>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;查询增强 QuestionAnswerAdvisor 问答拦截器 4.1期引入依赖 &ndash;&gt;-->
+<!--&lt;!&ndash;        <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;            <groupId>org.springframework.ai</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;            <artifactId>spring-ai-advisors-vector-store</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;PG数据库依赖 5.1期引入依赖&ndash;&gt;-->
+<!--&lt;!&ndash;        <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;            <groupId>org.springframework.ai</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;            <artifactId>spring-ai-starter-vector-store-pgvector</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;            <version>1.0.0-M7</version>&ndash;&gt;-->
+<!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;            <groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;            <artifactId>spring-boot-starter-jdbc</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;            <groupId>org.postgresql</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;            <artifactId>postgresql</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;            <scope>runtime</scope>&ndash;&gt;-->
+<!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;        <dependency>&ndash;&gt;-->
+<!--&lt;!&ndash;            <groupId>org.springframework.ai</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;            <artifactId>spring-ai-pgvector-store</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;            <version>1.0.0-M6</version>&ndash;&gt;-->
+<!--&lt;!&ndash;        </dependency>&ndash;&gt;-->
+<!--        &lt;!&ndash;MCP Tool工具 根据网址解析到网页的内容 6.1期引入&ndash;&gt;-->
+<!--        &lt;!&ndash; jsoup 库‌实现网页内容抓取和​解析&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.jsoup</groupId>-->
+<!--            <artifactId>jsoup</artifactId>-->
+<!--            <version>1.19.1</version>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;PDF 生成&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.itextpdf</groupId>-->
+<!--            <artifactId>itext-core</artifactId>-->
+<!--            <version>9.1.0</version>-->
+<!--            <type>pom</type>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>com.itextpdf</groupId>-->
+<!--            <artifactId>font-asian</artifactId>-->
+<!--            <version>9.1.0</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        &lt;!&ndash;第7期 引入MCP&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.ai</groupId>-->
+<!--            <artifactId>spring-ai-mcp-client-spring-boot-starter</artifactId>-->
+<!--        </dependency>-->
+
+<!--        &lt;!&ndash;程序调用 AI 大模型 第三种方式 LangChain4j&ndash;&gt;-->
+<!--        &lt;!&ndash; LangChain4J DashScope &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>dev.langchain4j</groupId>-->
+<!--            <artifactId>langchain4j-community-dashscope</artifactId>-->
+<!--            <version>1.0.0-beta2</version>-->
+<!--        </dependency>-->
+
+<!--        <dependency>-->
+<!--            <groupId>org.projectlombok</groupId>-->
+<!--            <artifactId>lombok</artifactId>-->
+<!--            <version>1.18.36</version>-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>cn.hutool</groupId>-->
+<!--            <artifactId>hutool-all</artifactId>-->
+<!--            <version>5.8.37</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.github.xiaoymin</groupId>-->
+<!--            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>-->
+<!--            <version>4.4.0</version>-->
+<!--        </dependency>-->
+<!--    </dependencies>-->
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -54,49 +209,27 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <!--程序调用 AI 大模型 第一种方式 SDK 接入-->
-        <!--阿里云百炼 灵积大模型服务-->
+        <!-- 阿里云百练、灵积大模型服务 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dashscope-sdk-java</artifactId>
             <version>2.19.1</version>
         </dependency>
-        <!--程序调用 AI 大模型 第二种方式 Spring AI-->
-        <!--Spring AI Alibaba-->
+        <!-- Spring AI Alibaba -->
         <dependency>
             <groupId>com.alibaba.cloud.ai</groupId>
             <artifactId>spring-ai-alibaba-starter-dashscope</artifactId>
-            <version>1.0.0.2</version>
         </dependency>
-        <!--支持结构化输出 3.2期视频引入-->
+        <!-- https://docs.spring.io/spring-ai/reference/api/chat/ollama-chat.html -->
         <dependency>
-            <groupId>com.github.victools</groupId>
-            <artifactId>jsonschema-generator</artifactId>
-            <version>4.38.0</version>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-model-ollama</artifactId>
         </dependency>
-        <!--支持文件会话记忆持久化的序列化 3.2期视频引入-->
-        <dependency>
-            <groupId>com.esotericsoftware</groupId>
-            <artifactId>kryo</artifactId>
-            <version>5.6.2</version>
-        </dependency>
-        <!--使用MarkdownDocumentReader 来读取markdown文档 4.1期引入依赖-->
         <dependency>
             <groupId>org.springframework.ai</groupId>
             <artifactId>spring-ai-markdown-document-reader</artifactId>
-            <version>1.0.0-M6</version>
         </dependency>
-        <!--查询增强 QuestionAnswerAdvisor 问答拦截器 4.1期引入依赖 -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.ai</groupId>-->
-<!--            <artifactId>spring-ai-advisors-vector-store</artifactId>-->
-<!--        </dependency>-->
-        <!--PG数据库依赖 5.1期引入依赖-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.ai</groupId>-->
-<!--            <artifactId>spring-ai-starter-vector-store-pgvector</artifactId>-->
-<!--            <version>1.0.0-M7</version>-->
-<!--        </dependency>-->
+        <!-- 手动整合 PGVector 向量存储 -->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
 <!--            <artifactId>spring-boot-starter-jdbc</artifactId>-->
@@ -109,46 +242,59 @@
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.ai</groupId>-->
 <!--            <artifactId>spring-ai-pgvector-store</artifactId>-->
-<!--            <version>1.0.0-M6</version>-->
 <!--        </dependency>-->
-        <!--MCP Tool工具 根据网址解析到网页的内容 6.1期引入-->
-        <!-- jsoup 库‌实现网页内容抓取和​解析-->
+        <!-- 自动整合 PGVector 向量存储 -->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.ai</groupId>-->
+        <!--            <artifactId>spring-ai-starter-vector-store-pgvector</artifactId>-->
+        <!--            <version>1.0.0-M7</version>-->
+        <!--        </dependency>-->
+        <!-- Spring AI MCP Client -->
         <dependency>
-            <groupId>org.jsoup</groupId>
-            <artifactId>jsoup</artifactId>
-            <version>1.19.1</version>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-starter-mcp-client</artifactId>
         </dependency>
-        <!--PDF 生成-->
         <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>itext-core</artifactId>
-            <version>9.1.0</version>
-            <type>pom</type>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-advisors-vector-store</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>com.itextpdf</groupId>
-            <artifactId>font-asian</artifactId>
-            <version>9.1.0</version>
-            <scope>test</scope>
-        </dependency>
-        <!--程序调用 AI 大模型 第三种方式 LangChain4j-->
         <!-- LangChain4J DashScope -->
         <dependency>
             <groupId>dev.langchain4j</groupId>
             <artifactId>langchain4j-community-dashscope</artifactId>
             <version>1.0.0-beta2</version>
         </dependency>
-
+        <!-- 支持结构化输出 -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.36</version>
-            <optional>true</optional>
+            <groupId>com.github.victools</groupId>
+            <artifactId>jsonschema-generator</artifactId>
+            <version>4.38.0</version>
         </dependency>
+        <!-- 支持文件会话记忆持久化的序列化 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+            <version>5.6.2</version>
+        </dependency>
+        <!-- jsoup HTML 解析库 -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.19.1</version>
+        </dependency>
+        <!-- PDF 生成库 -->
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/itext-core -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext-core</artifactId>
+            <version>9.1.0</version>
+            <type>pom</type>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.itextpdf/font-asian -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>font-asian</artifactId>
+            <version>9.1.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -160,6 +306,17 @@
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
             <version>4.4.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.36</version>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

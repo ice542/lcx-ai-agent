@@ -14,6 +14,14 @@ spring:
 #      base-url: http://localhost:11434
 #      chat:
 #        model: gemma3:1b
+#    mcp:
+#      client:
+#        sse:
+#          connections:
+#            server1:
+#              url: http://localhost:8127
+#            stdio:
+#              servers-configuration: classpath:mcp-servers.json
 server:
   port: 8123
   servlet:

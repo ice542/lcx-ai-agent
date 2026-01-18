@@ -12,8 +12,6 @@ import reactor.core.publisher.Flux;
 /**
  * 自定义 Re2 Advisor
  * 可提高大型语言模型的推理能力
- *
- * 但有个弊端:成本太高 token翻倍 因为用户问题重复两次 所以翻倍
  */
 public class ReReadingAdvisor implements CallAdvisor, StreamAdvisor {
 

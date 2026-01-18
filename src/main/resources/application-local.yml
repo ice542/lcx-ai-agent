@@ -6,7 +6,19 @@ spring:
       api-key: "sk-6264f2825a044d33a1bf4d238768237d"
       chat:
         options:
-          model: qwen-max
+          model: qwen-turbo
+#    mcp:
+#      client:
+#        sse:
+#          connections:
+#            server1:
+#              url: http://localhost:8127
+#    mcp:
+#      client:
+#        sse:
+#          connections:
+#            imageSearch:
+#              url: http://localhost:8127
 #  datasource:
 #    url: jdbc:postgresql://rm-cn-b8p4m1ifn0001yeo.rwlb.rds.aliyuncs.com/yu_ai_agent
 #    username: my_user
